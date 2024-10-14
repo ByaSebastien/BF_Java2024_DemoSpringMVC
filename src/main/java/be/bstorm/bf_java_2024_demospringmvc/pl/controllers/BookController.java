@@ -30,7 +30,8 @@ public class BookController {
 
     @GetMapping("/{isbn}")
     public String getOne(
-            @PathVariable String isbn,
+            @PathVariable
+            String isbn,
             Model model
     ) {
         try {
@@ -55,5 +56,14 @@ public class BookController {
     ) {
         books.add(new Book(book.getIsbn(), book.getTitle()));
         return "redirect:/book";
+    }
+
+    @GetMapping("/filter")
+    public String filterBooks(
+            @RequestParam(name = "title", required = false, defaultValue = "Default")
+            String title,
+            Model model
+    ) {
+        return "";
     }
 }
